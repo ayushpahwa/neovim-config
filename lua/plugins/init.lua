@@ -59,4 +59,17 @@ return {
     },
     config = true,
   },
+  {
+    "kdheepak/lazygit.nvim",
+    keys = {
+      ";c",
+      ":LazyGit<Return>",
+      silent = true,
+      noremap = true,
+    },
+    -- optional: for floating window with no border decoration
+    dependencies = {
+      "nvim-lua/plenary.nvim",
+    },
+  },
 }
