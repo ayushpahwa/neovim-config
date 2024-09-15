@@ -63,10 +63,11 @@ return {
     "kdheepak/lazygit.nvim",
     keys = {
       {
-        ";c",
+        ";g",
         ":LazyGit<Return>",
         silent = true,
         noremap = true,
+        desc = "Open git control",
       },
     },
     -- optional: for floating window with no border decoration

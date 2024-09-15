@@ -2,41 +2,39 @@ require "nvchad.mappings"
 local keymap = vim.keymap
 local opts = { noremap = true, silent = true }
 
+-- Function to merge opts and add description
+local function add_description(desc)
+  local new_opts = vim.tbl_extend("force", opts, { desc = desc })
+  return new_opts
+end
+
 keymap.set("n", "x", '"_x')
 
 -- Increment/decrement
 keymap.set("n", "+", "<C-a>")
 keymap.set("n", "-", "<C-x>")
 
--- Save file and quit
-keymap.set("n", "<Leader>w", ":update<Return>", opts)
-keymap.set("n", "<Leader>q", ":quit<Return>", opts)
-keymap.set("n", "<Leader>Q", ":qa<Return>", opts)
-
 -- File explorer with NvimTree
-keymap.set("n", "<Leader>t", ":NvimTreeToggle<Return>", opts)
+keymap.set("n", "<Leader>e", ":NvimTreeToggle<Return>", add_description "Toggle treesitter")
 
 -- Tabs
-keymap.set("n", "te", ":tabedit")
-keymap.set("n", "<tab>", ":tabnext<Return>", opts)
-keymap.set("n", "<s-tab>", ":tabprev<Return>", opts)
-keymap.set("n", "tw", ":tabclose<Return>", opts)
+keymap.set("n", "te", ":tabedit<Return>", { desc = "New tab" })
+keymap.set("n", "<tab>", ":tabnext<Return>", add_description "Goto next tab")
+keymap.set("n", "<s-tab>", ":tabprev<Return>", add_description "Goto last tab")
+keymap.set("n", "tw", ":tabclose<Return>", add_description "Close current tab")
+
+-- Window operations
+keymap.set("n", "s", "", add_description "Window operations")
 
 -- Split window
-keymap.set("n", "ss", ":split<Return>", opts)
-keymap.set("n", "sv", ":vsplit<Return>", opts)
+keymap.set("n", "ss", ":split<Return>", add_description "Split screen vertically")
+keymap.set("n", "sv", ":vsplit<Return>", add_description "Split screen horizontally")
 
 -- Move window
-keymap.set("n", "sh", "<C-w>h")
-keymap.set("n", "sk", "<C-w>k")
-keymap.set("n", "sj", "<C-w>j")
-keymap.set("n", "sl", "<C-w>l")
-
--- Resize window
-keymap.set("n", "<C-S-h>", "<C-w><")
-keymap.set("n", "<C-S-l>", "<C-w>>")
-keymap.set("n", "<C-S-k>", "<C-w>+")
-keymap.set("n", "<C-S-j>", "<C-w>-")
+keymap.set("n", "sh", "<C-w>h", { desc = "Move cursor to left split" })
+keymap.set("n", "sk", "<C-w>k", { desc = "Move cursor to upper split" })
+keymap.set("n", "sj", "<C-w>j", { desc = "Move cursor to down split" })
+keymap.set("n", "sl", "<C-w>l", { desc = "Move cursor to right split" })
 
 -- Diagnostics
 keymap.set("n", "<C-j>", function()
