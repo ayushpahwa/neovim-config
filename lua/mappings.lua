@@ -18,10 +18,8 @@ keymap.set("n", "-", "<C-x>")
 keymap.set("n", "<Leader>e", ":NvimTreeToggle<Return>", add_description "Toggle treesitter")
 
 -- Tabs
-keymap.set("n", "te", ":tabedit<Return>", { desc = "New tab" })
-keymap.set("n", "<tab>", ":tabnext<Return>", add_description "Goto next tab")
-keymap.set("n", "<s-tab>", ":tabprev<Return>", add_description "Goto last tab")
-keymap.set("n", "tw", ":tabclose<Return>", add_description "Close current tab")
+keymap.set("n", "<tab>", ":bnext<Return>", add_description "Goto next tab")
+keymap.set("n", "<s-tab>", ":bprev<Return>", add_description "Goto last tab")
 
 -- Window operations
 keymap.set("n", "s", "", add_description "Window operations")
