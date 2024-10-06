@@ -47,7 +47,7 @@ return {
     cmd = "IncRename",
     keys = {
       {
-        "<leader>rn",
+        "<leader>rr",
         function()
           return ":IncRename " .. vim.fn.expand "<cword>"
         end,
@@ -92,6 +92,30 @@ return {
     },
     config = function()
       require "configs.telescope"
+    end,
+  },
+  -- Unit testing
+  {
+    "nvim-neotest/neotest",
+    dependencies = {
+      "nvim-lua/plenary.nvim",
+      "nvim-neotest/nvim-nio",
+      "antoinemadec/FixCursorHold.nvim",
+      "nvim-neotest/neotest-jest",
+    },
+    config = function()
+      require("neotest").setup {
+        adapters = {
+          require "neotest-jest" {
+            jestCommand = "yarn test:unit --",
+            jestConfigFile = "jest.config.js",
+            env = { CI = true },
+            cwd = function(path)
+              return vim.fn.getcwd()
+            end,
+          },
+        },
+      }
     end,
   },
 }
