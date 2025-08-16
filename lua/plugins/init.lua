@@ -95,29 +95,29 @@ return {
     end,
   },
   -- Unit testing
-  {
-    "nvim-neotest/neotest",
-    dependencies = {
-      "nvim-lua/plenary.nvim",
-      "nvim-neotest/nvim-nio",
-      "antoinemadec/FixCursorHold.nvim",
-      "nvim-neotest/neotest-jest",
-    },
-    config = function()
-      require("neotest").setup {
-        adapters = {
-          require "neotest-jest" {
-            jestCommand = "yarn test:unit --",
-            jestConfigFile = "jest.config.js",
-            env = { CI = true },
-            cwd = function(path)
-              return vim.fn.getcwd()
-            end,
-          },
-        },
-      }
-    end,
-  },
+  -- {
+  --   "nvim-neotest/neotest",
+  --   dependencies = {
+  --     "nvim-lua/plenary.nvim",
+  --     "nvim-neotest/nvim-nio",
+  --     "antoinemadec/FixCursorHold.nvim",
+  --     "nvim-neotest/neotest-jest",
+  --   },
+  --   config = function()
+  --     require("neotest").setup {
+  --       adapters = {
+  --         require "neotest-jest" {
+  --           jestCommand = "yarn test:unit --",
+  --           jestConfigFile = "jest.config.js",
+  --           env = { CI = true },
+  --           cwd = function(path)
+  --             return vim.fn.getcwd()
+  --           end,
+  --         },
+  --       },
+  --     }
+  --   end,
+  -- },
   -- autocomplete
   {
     "hrsh7th/nvim-cmp",
@@ -157,6 +157,7 @@ return {
     dependencies = {
       "jay-babu/mason-nvim-dap.nvim",
       "rcarriga/nvim-dap-ui",
+      "nvim-neotest/nvim-nio",
     },
     config = function()
       local dap = require "dap"
