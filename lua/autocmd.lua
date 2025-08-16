@@ -7,3 +7,12 @@ vim.api.nvim_create_autocmd("TextYankPost", {
     vim.highlight.on_yank()
   end,
 })
+
+-- Autoformat PHP files on save using PHPCBF
+vim.api.nvim_create_autocmd("BufWritePre", {
+  pattern = "*.php",
+  desc = "Autoformat PHP files on save using PHPCBF",
+  callback = function()
+    require("conform").format()
+  end,
+})

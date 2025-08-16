@@ -3,7 +3,7 @@ local options = {
     lua = { "stylua" },
     css = { "prettierd" },
     html = { "prettierd" },
-    php = { "php-cs-fixer" },
+    php = { "phpcbf" },
     -- ["*"] = { "prettierd" },
   },
 
