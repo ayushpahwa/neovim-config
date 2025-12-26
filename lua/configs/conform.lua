@@ -4,6 +4,11 @@ local options = {
     css = { "prettierd" },
     html = { "prettierd" },
     php = { "phpcbf" },
+    javascript = { "prettierd" },
+    javascriptreact = { "prettierd" },
+    typescript = { "prettierd" },
+    typescriptreact = { "prettierd" },
+    python = { "ruff_format" },
     -- ["*"] = { "prettierd" },
   },
 
