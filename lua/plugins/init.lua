@@ -201,4 +201,8 @@ return {
       dapui.setup()
     end,
   },
+  {
+    "OXY2DEV/markview.nvim",
+    lazy = false,
+  },
 }
